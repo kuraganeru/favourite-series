@@ -1,7 +1,7 @@
-export default function SeriesCategoryHeader() {
+export default function SeriesCategoryHeader({categoryName}) {
     return (
         <>
-            <h1>Category Name</h1>
+            <h1>{categoryName}</h1>
             <button>Edit</button>
         </>
     )
