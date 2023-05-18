@@ -1,11 +1,11 @@
+import SeriesIndex from "./SeriesIndex"
+import SeriesCategoryItems from "./SeriesCategoryItems"
+
 export default function SeriesCategory({series}) {
     return (
         <>
-            {series.map(oneSeries => (
-                <div key={oneSeries.id}>
-                    <img src={oneSeries.image} alt={oneSeries.title} />
-                </div>
-            ))}
+            <SeriesCategoryItems series={series} />
+            <SeriesIndex series={series} />
         </>
     )
 }
