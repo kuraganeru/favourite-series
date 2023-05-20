@@ -5,10 +5,10 @@ export default function SeriesIndex({ series, onSetClickedSeriesChange, clickedS
                 <li
                     onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "li")}
                     onMouseLeave={() => onSetClickedSeriesChange(null)}
-                    key={oneSeries.title}
+                    key={oneSeries.id}
                     className={`${clickedSeries?.originalElement !== "li" && clickedSeries?.id === oneSeries?.id ? "index-selected" : ''}`} 
                 >
-                    {oneSeries.title}
+                    {oneSeries.name}
                 </li>
             ))}
         </ol>
