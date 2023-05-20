@@ -1,10 +1,15 @@
 import CategoryEdit from "./CategoryEdit"
 
-export default function SeriesCategoryHeader({categoryName}) {
+export default function SeriesCategoryHeader({ categoryName, editCategoryName, onSetEditCategoryNameChange, onSetCategoryNameChange }) {
     return (
         <>
-            <h1>{categoryName}</h1>
-            <CategoryEdit />
+            {editCategoryName ?
+                <CategoryEdit categoryName={categoryName} onSetCategoryNameChange={onSetCategoryNameChange} /> :
+                <h2>{categoryName}</h2>
+            }
+            <button onClick={() => onSetEditCategoryNameChange(!editCategoryName)}>
+                {editCategoryName ? "Save" : "Edit"}
+            </button>
         </>
     )
 }
