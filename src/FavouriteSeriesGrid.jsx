@@ -1,6 +1,7 @@
 import SeriesCategoryHeader from "./components/SeriesCategoryHeader"
 import SeriesCategory from "./components/SeriesCategory"
 import AddSeriesSearch from "./components/AddSeriesSearch"
+import AddSeriesResults from "./components/AddSeriesResults"
 import { useState } from "react"
 
 function App() {
