@@ -7,7 +7,7 @@ export default function SeriesCategoryItems({series, clickedSeries, onSetClicked
             {series.map(oneSeries => (
                 <SeriesItem 
                     oneSeries={oneSeries} 
-                    key={oneSeries.title} 
+                    key={oneSeries.id} 
                     clickedSeries={clickedSeries}
                     onSetClickedSeriesChange={onSetClickedSeriesChange}
                 />
