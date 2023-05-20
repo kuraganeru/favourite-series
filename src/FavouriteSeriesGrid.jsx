@@ -10,11 +10,22 @@ function App() {
   const [clickedSeries, setClickedSeries] = useState(null)
   const [searchText, setSearchText] = useState("")
   const [searchSeries, setSearchSeries] = useState(null)
-
-  const series = [{ title: "Devil May Cry 3", image: "https://i.imgur.com/lBZNKyA.jpg", id: 1 }, { title: "Dead Rising", image: "https://i.imgur.com/n2MJr5O.jpg", id: 2 }, { title: "Nioh 2", image: "https://i0.wp.com/tryrolling.com/wp-content/uploads/2020/04/Nioh-2-Background.jpg?resize=150%2C150&ssl=1", id: 3 }]
+  const [series, setSeries] = useState([{
+    id: 103330,
+    category: 0,
+    cover: { id: 83563, image_id: 'co1sh7' },
+    name: 'Nioh 2',
+    platforms: [[Object], [Object]]
+  }])
 
   function handleSetClickedSeries(oneSeries, originalElement) {
     setClickedSeries({ ...oneSeries, originalElement })
+  }
+
+  function handleSetSeries(oneSeries) {
+    let newSeries = [...series]
+    newSeries.push(oneSeries)
+    setSeries(newSeries)
   }
 
   async function handleFetchData() {
