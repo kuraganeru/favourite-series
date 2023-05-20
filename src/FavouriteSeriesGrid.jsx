@@ -47,6 +47,12 @@ function App() {
       <AddSeriesSearch
         searchText={searchText}
         onSetSearchText={setSearchText}
+        handleFetchData={handleFetchData}
+      />
+
+      <AddSeriesResults
+        searchSeries={searchSeries}
+        handleSetSeries={handleSetSeries}
       />
       <SeriesCategory
         series={series}
