@@ -1,5 +1,6 @@
 import SeriesCategoryHeader from "./components/SeriesCategoryHeader"
 import SeriesCategory from "./components/SeriesCategory"
+import AddSeriesSearch from "./components/AddSeriesSearch"
 import { useState } from "react"
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         onSetEditCategoryNameChange={setEditCategoryName}
         onSetCategoryNameChange={setCategoryName}
         />
+      <AddSeriesSearch />
       <SeriesCategory 
         series={series} 
         clickedSeries={clickedSeries}
