@@ -38,7 +38,6 @@ function App() {
 
   return (
     <>
-      <button onClick={handleFetchData}>Click Me</button>
       <SeriesCategoryHeader
         categoryName={categoryName}
         editCategoryName={editCategoryName}
