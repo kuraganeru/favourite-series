@@ -1,5 +1,11 @@
-export default function CategoryEdit() {
+export default function CategoryEdit({categoryName, onSetCategoryNameChange}) {
     return (
-        <button>Edit</button>
+        <>
+            <input 
+                type="text" 
+                value={categoryName} 
+                onChange={(e) => onSetCategoryNameChange(e.target.value)} 
+            />
+        </>
     )
 }
