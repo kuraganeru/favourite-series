@@ -1,4 +1,4 @@
-export default function AddSeriesSearch({searchText, onSetSearchText}) {
+export default function AddSeriesSearch({ searchText, onSetSearchText, handleFetchData }) {
     return (
         <>
             <h2>Add Series</h2>
@@ -7,6 +7,7 @@ export default function AddSeriesSearch({searchText, onSetSearchText}) {
                 value={searchText}
                 onChange={(e) => onSetSearchText(e.target.value)}
             />
+            <button onClick={handleFetchData}>Click Me</button>
         </>
     )
 }
