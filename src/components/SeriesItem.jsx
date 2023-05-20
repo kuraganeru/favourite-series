@@ -7,7 +7,7 @@ export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSerie
                 className={`image ${clickedSeries?.originalElement !== "img" && clickedSeries?.id === oneSeries?.id && "img-selected"}`} 
                 src={oneSeries.image} 
                 alt={oneSeries.title}
-                onMouseEnter={(ev) => onSetClickedSeriesChange(oneSeries, "img")}
+                onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "img")}
                 onMouseLeave={() => onSetClickedSeriesChange(null)}
             />
         </div>
