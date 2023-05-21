@@ -1,19 +1,17 @@
-.category-header {
+header {
     display: flex;
-    margin: 0.25em 0;
+    margin: 0 0 2em;
+    align-items: center;
 }
 
-.header-title {
+header h2 {
+    margin: 0;
     margin-right: 0.75em;
 }
 
-.header-title h2 {
-    margin: 0;
-}
-
-.category-header button {
+header button {
     padding: 0.25em 0.75em;
-    color: gray;
-    align-self: center;
     font-size: 0.8em;
+    flex: 0;
+    margin: 0;
 }
