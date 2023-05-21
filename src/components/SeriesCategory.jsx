@@ -1,6 +1,5 @@
 import SeriesIndex from "./SeriesIndex"
 import SeriesCategoryItems from "./SeriesCategoryItems"
-import "./SeriesCategory.css"
 
 export default function SeriesCategory({series, clickedSeries, handleSetClickedSeries}) {
     return (
