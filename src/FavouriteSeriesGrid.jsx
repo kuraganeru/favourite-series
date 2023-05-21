@@ -37,11 +37,11 @@ function App() {
       const responseData = await fetch(`http://localhost:5000/games/search/${searchText}`, fetchOptions)
       setRequestLoading(true)
 
-    if (!responseData.ok) {
-      throw new Error("Request error")
-    }
-    const responseJSON = await responseData.json()
-    setSearchSeries(responseJSON)
+      if (!responseData.ok) {
+        throw new Error("Request error")
+      }
+      const responseJSON = await responseData.json()
+      setSearchSeries(responseJSON)
     } catch (error) {
       console.error(`Error: ${error}`)
     } finally {
