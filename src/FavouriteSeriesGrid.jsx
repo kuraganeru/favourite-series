@@ -69,13 +69,11 @@ function App() {
         handleSetSeries={handleSetSeries}
       />
 
-      <main className="container">
-        <SeriesCategory
-          series={series}
-          clickedSeries={clickedSeries}
-          handleSetClickedSeries={handleSetClickedSeries}
-        />
-      </main>
+      <SeriesCategory
+        series={series}
+        clickedSeries={clickedSeries}
+        handleSetClickedSeries={handleSetClickedSeries}
+      />
     </>
   )
 }
