@@ -3,7 +3,7 @@ import "./SeriesCategoryItems.css"
 
 export default function SeriesCategoryItems({series, clickedSeries, onSetClickedSeriesChange}) {
     return (
-        <div className="flex">
+        <>
             {series.map(oneSeries => (
                 <SeriesItem 
                     oneSeries={oneSeries} 
@@ -12,6 +12,6 @@ export default function SeriesCategoryItems({series, clickedSeries, onSetClicked
                     onSetClickedSeriesChange={onSetClickedSeriesChange}
                 />
             ))}
-        </div>
+        </>
     )
 }
