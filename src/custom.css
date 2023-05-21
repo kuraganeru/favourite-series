@@ -1,0 +1,7 @@
+main .grid {
+    grid-template-columns: auto 25%;
+}
+
+aside li {
+  display: list-item !important;
+}
