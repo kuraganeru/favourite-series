@@ -2,6 +2,7 @@ import SeriesCategoryHeader from "./components/SeriesCategoryHeader"
 import SeriesCategory from "./components/SeriesCategory"
 import AddSeriesSearch from "./components/AddSeriesSearch"
 import AddSeriesResults from "./components/AddSeriesResults"
+import AddSeries from "./components/AddSeries"
 import { useState } from "react"
 
 function App() {
@@ -58,14 +59,12 @@ function App() {
         onSetEditCategoryNameChange={setEditCategoryName}
         onSetCategoryNameChange={setCategoryName}
       />
-      <AddSeriesSearch
+
+      <AddSeries
         searchText={searchText}
         onSetSearchText={setSearchText}
         handleFetchData={handleFetchData}
         requestLoading={requestLoading}
-      />
-
-      <AddSeriesResults
         searchSeries={searchSeries}
         handleSetSeries={handleSetSeries}
       />
