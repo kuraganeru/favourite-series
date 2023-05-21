@@ -17,7 +17,7 @@ export default function AddSeriesSearch({ searchText, onSetSearchText, handleFet
                 onKeyDown={(e) => handleOnKeyDown(e)}
             />
             <button onClick={handleFetchData}>Search</button>
-            <p>{requestLoading ? "Loading..." : "Waiting for request"}</p>
+            <p>{requestLoading && "Loading..."}</p>
         </>
     )
 }
