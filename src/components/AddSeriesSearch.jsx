@@ -13,6 +13,7 @@ export default function AddSeriesSearch({ searchText, onSetSearchText, handleFet
                 type="text"
                 value={searchText}
                 className="search-input"
+                placeholder="Search for series..."
                 onChange={(e) => onSetSearchText(e.target.value)}
                 onKeyDown={(e) => handleOnKeyDown(e)}
             />
