@@ -1,7 +1,7 @@
 import SeriesIndex from "./SeriesIndex"
 import SeriesCategoryItems from "./SeriesCategoryItems"
 
-export default function SeriesCategory({series, clickedSeries, handleSetClickedSeries}) {
+export default function SeriesCategory({ series, clickedSeries, handleSetClickedSeries }) {
     return (
         <div className="grid">
             <section>
