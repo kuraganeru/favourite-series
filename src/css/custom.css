@@ -1,0 +1,53 @@
+main .grid {
+    grid-template-columns: auto 25%;
+}
+
+aside li {
+  display: list-item !important;
+}
+
+/* AddSeriesSearch */
+.search-input {
+  padding: 1em;
+  border-radius: 8px;
+  width: 450px;
+  margin-right: 5px;
+  border: 1px solid gray;
+}
+
+/* SeriesCategoryHeader */
+header {
+  display: flex;
+  margin: 0 0 2em;
+  align-items: center;
+}
+
+header h2 {
+  margin: 0;
+  margin-right: 0.75em;
+}
+
+header button {
+  padding: 0.25em 0.75em;
+  font-size: 0.8em;
+  flex: 0;
+  margin: 0;
+}
+
+/* SeriesItem */
+.image {
+  width: 150px;
+  height: 150px;
+  box-sizing: border-box;
+  transition: all 0.1s;
+}
+
+.img-selected {
+  transform:scale(1.05)
+}
+
+.index-selected {
+  color: red;
+  transform: scale(1.10);
+  transition: all 0.2s;
+}

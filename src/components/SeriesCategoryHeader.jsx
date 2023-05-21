@@ -1,5 +1,5 @@
 import CategoryEdit from "./CategoryEdit"
-import "./css/SeriesCategoryHeader.css"
+// import "./css/SeriesCategoryHeader.css"
 
 export default function SeriesCategoryHeader({ categoryName, editCategoryName, onSetEditCategoryNameChange, onSetCategoryNameChange }) {
     return (

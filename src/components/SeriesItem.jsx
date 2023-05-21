@@ -1,5 +1,3 @@
-import "./SeriesItem.css"
-
 export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSeriesChange }) {
     return (
         <>
