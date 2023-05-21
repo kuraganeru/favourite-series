@@ -29,11 +29,22 @@ function App() {
   }
 
   async function handleFetchData() {
-    const responseData = await fetch(`http://localhost:5000/games/search/${searchText}`, {
-      method: "POST"
-    })
+    try {
+      const fetchOptions = {
+        method: "POST"
+      }
+      const responseData = await fetch(`http://localhost:5000/games/search/${searchText}`, fetchOptions)
+
+    if (!responseData.ok) {
+      throw new Error("Request error")
+    }
     const responseJSON = await responseData.json()
     setSearchSeries(responseJSON)
+    } catch (error) {
+      console.error(`Error: ${error}`)
+    } finally {
+      console.log("Request completed")
+    }
   }
 
   return (
