@@ -1,5 +1,4 @@
 import SeriesItem from "./SeriesItem"
-import "./SeriesCategoryItems.css"
 
 export default function SeriesCategoryItems({series, clickedSeries, onSetClickedSeriesChange}) {
     return (
