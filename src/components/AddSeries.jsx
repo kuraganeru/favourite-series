@@ -1,5 +1,6 @@
 import AddSeriesSearch from "./AddSeriesSearch"
 import AddSeriesResults from "./AddSeriesResults"
+import AddSeriesLoading from "./AddSeriesLoading"
 
 export default function AddSeries({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading }) {
     return (
@@ -8,6 +9,9 @@ export default function AddSeries({ searchText, onSetSearchText, searchSeries, h
                 searchText={searchText}
                 onSetSearchText={onSetSearchText}
                 handleFetchData={handleFetchData}
+            />
+
+            <AddSeriesLoading 
                 requestLoading={requestLoading}
             />
 
