@@ -7,16 +7,17 @@ export default function AddSeriesSearch({ searchText, onSetSearchText, handleFet
     return (
         <>
             <h2>Add Series</h2>
-            <input
-                type="text"
-                value={searchText}
-                className="search-input"
-                placeholder="Search for series..."
-                onChange={(e) => onSetSearchText(e.target.value)}
-                onKeyDown={(e) => handleOnKeyDown(e)}
-            />
-            <button onClick={handleFetchData}>Search</button>
-            <p>{requestLoading && "Loading..."}</p>
+            <div className="search-container">
+                <input
+                    type="text"
+                    value={searchText}
+                    className="search-input"
+                    placeholder="Search for series..."
+                    onChange={(e) => onSetSearchText(e.target.value)}
+                    onKeyDown={(e) => handleOnKeyDown(e)}
+                />
+                <button onClick={handleFetchData}>Search</button>
+            </div>
         </>
     )
 }
