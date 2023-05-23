@@ -58,19 +58,25 @@ function App() {
         onSetCategoryNameChange={setCategoryName}
       />
 
-      <AddSeries
+      {/* <AddSeries
         searchText={searchText}
         onSetSearchText={setSearchText}
         handleFetchData={handleFetchData}
         requestLoading={requestLoading}
         searchSeries={searchSeries}
         handleSetSeries={handleSetSeries}
-      />
+      /> */}
 
       <SeriesCategory
         series={series}
         clickedSeries={clickedSeries}
         handleSetClickedSeries={handleSetClickedSeries}
+        searchText={searchText}
+        onSetSearchText={setSearchText}
+        handleFetchData={handleFetchData}
+        requestLoading={requestLoading}
+        searchSeries={searchSeries}
+        handleSetSeries={handleSetSeries}
       />
     </>
   )
