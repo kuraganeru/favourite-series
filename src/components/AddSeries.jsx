@@ -4,7 +4,7 @@ import AddSeriesLoading from "./AddSeriesLoading"
 
 export default function AddSeries({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading }) {
     return (
-        <div className="container">
+        <div className="container add-series">
             <AddSeriesSearch
                 searchText={searchText}
                 onSetSearchText={onSetSearchText}
