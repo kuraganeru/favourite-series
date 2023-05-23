@@ -18,9 +18,12 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                 {
                     searchSeries && searchText && searchSeries.map(series => {
                         return (
-
-                            <li onClick={() => handleSetSeries(series)}
-                            >{series.name}</li>
+                            <li
+                                onClick={() => handleSetSeries(series)}
+                                key={series.id}
+                            >
+                                {series.name}
+                            </li>
 
                         )
                     })
