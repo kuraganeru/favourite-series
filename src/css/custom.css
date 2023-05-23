@@ -1,8 +1,8 @@
 main .grid {
-    grid-template-columns: auto 25%;
+    grid-template-columns: auto 30%;
 }
 
-aside li {
+aside ol li {
   display: list-item !important;
 }
 
@@ -50,4 +50,34 @@ header button {
   color: red;
   transform: scale(1.10);
   transition: all 0.2s;
+}
+
+.search-container {
+  display: flex;
+}
+.search-container input {
+  flex: 1 0 85%;
+}
+
+.add-series article {
+  margin: 0.25em;
+  padding: 0.25em;
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+}
+
+.add-series img {
+  margin-right: 0.75em;
+}
+
+.add-series span {
+  flex: 1 0 75%;
+}
+
+.add-series-results {
+  overflow-y: scroll;
+  max-height: 500px;
 }
