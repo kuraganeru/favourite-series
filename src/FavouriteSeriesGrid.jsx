@@ -44,7 +44,7 @@ function App() {
         throw new Error("Request error")
       }
       const responseJSON = await responseData.json()
-      setSearchSeries(responseJSON)
+      setSearchSeries(responseJSON.filter(responseItem => series.some(oneSeries => oneSeries.id !== responseItem.id)))
     } catch (error) {
       console.error(`Error: ${error}`)
     } finally {
