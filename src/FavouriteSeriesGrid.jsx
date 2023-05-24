@@ -24,6 +24,9 @@ function App() {
 
   function handleSetSeries(oneSeries) {
     let newSeries = [...series]
+    if (newSeries.find(series => series.id === oneSeries.id)) {
+      return;
+    }
     newSeries.push(oneSeries)
     setSeries(newSeries)
   }
