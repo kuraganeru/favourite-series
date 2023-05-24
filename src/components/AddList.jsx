@@ -1,8 +1,13 @@
-export default function AddList({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading }) {
+export default function AddList({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries }) {
     function handleOnKeyDown(e) {
         if (e.key === "Enter") {
             handleFetchData()
         }
+    }
+
+    function handleClearSearch() {
+        onSetSearchText("")
+        onSetSearchSeries([])
     }
     return (
         <>
