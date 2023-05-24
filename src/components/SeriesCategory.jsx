@@ -2,7 +2,7 @@ import SeriesIndex from "./SeriesIndex"
 import SeriesCategoryItems from "./SeriesCategoryItems"
 import AddList from "./AddList"
 
-export default function SeriesCategory({ series, clickedSeries, handleSetClickedSeries, searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading }) {
+export default function SeriesCategory({ series, clickedSeries, handleSetClickedSeries, searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries }) {
     return (
         <main className="container">
             <div className="grid">
@@ -22,6 +22,7 @@ export default function SeriesCategory({ series, clickedSeries, handleSetClicked
                             handleSetSeries={handleSetSeries}
                             handleFetchData={handleFetchData}
                             requestLoading={requestLoading}
+                            onSetSearchSeries={onSetSearchSeries}
                         />
                     </div>
                     <div>
