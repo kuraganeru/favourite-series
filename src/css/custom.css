@@ -4,6 +4,7 @@ main .grid {
 
 aside ol li {
   display: list-item !important;
+  font-size: 0.85em;
 }
 
 /* AddSeriesSearch */
