@@ -29,6 +29,7 @@ function App() {
     }
     newSeries.push(oneSeries)
     setSeries(newSeries)
+    setSearchSeries(searchSeries.filter(searchItem => !newSeries.includes(searchItem) ))
   }
 
   async function handleFetchData() {
