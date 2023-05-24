@@ -81,6 +81,7 @@ function App() {
         requestLoading={requestLoading}
         searchSeries={searchSeries}
         handleSetSeries={handleSetSeries}
+        onSetSearchSeries={setSearchSeries}
       />
     </>
   )
