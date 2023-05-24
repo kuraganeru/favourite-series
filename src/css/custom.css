@@ -56,9 +56,12 @@ header button {
 .search-container {
   display: flex;
 }
-.search-container input {
-  flex: 1 0 85%;
+.search-container button {
+  flex: 0;
 }
+/* .search-container input {
+  flex: 1 0 85%;
+} */
 
 .add-series article {
   margin: 0.25em;
