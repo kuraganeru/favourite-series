@@ -85,3 +85,16 @@ header button {
   overflow-y: scroll;
   max-height: 500px;
 }
+
+.add-list-ul {
+  padding-left: 0;
+}
+
+.add-list-ul li {
+  font-size: 0.8em;
+}
+
+.add-list-ul li:hover {
+  background: slategray;
+  cursor: pointer;
+}
