@@ -1,3 +1,6 @@
+import { useCallback, useEffect } from "react"
+import debounce from "lodash.debounce"
+
 export default function AddList({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries }) {
     function handleOnKeyDown(e) {
         if (e.key === "Enter") {
@@ -9,6 +12,21 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
         onSetSearchText("")
         onSetSearchSeries([])
     }
+
+    const handleDebounce = useCallback(
+        debounce((value) => {
+            handleFetchData(value)
+        }, 800),
+        []
+    )
+
+    useEffect(() => {
+        handleDebounce(searchText)
+    }, [searchText])
+
+    function handleSearch(e) {
+        onSetSearchText(e.target.value)
+    }
     return (
         <>
             <div className="search-container">
@@ -17,14 +35,14 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                     value={searchText}
                     className="search-input"
                     placeholder="Search for series..."
-                    onChange={(e) => onSetSearchText(e.target.value)}
+                    onChange={e => handleSearch(e)}
                     onKeyDown={(e) => handleOnKeyDown(e)}
                 />
                 <button onClick={handleClearSearch}>X</button>
             </div>
             <ul className="add-list-ul">
                 {
-                    searchSeries && searchText && searchSeries.map(series => {
+                    searchSeries && searchSeries.map(series => {
                         return (
                             <li
                                 onClick={() => handleSetSeries(series)}
