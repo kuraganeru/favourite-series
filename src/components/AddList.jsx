@@ -8,6 +8,12 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
         }
     }
 
+    function handleOnKeyUp(e) {
+        if (e.key === "Backspace" && !searchText) {
+            handleClearSearch()
+        }
+    }
+
     function handleClearSearch() {
         onSetSearchText("")
         onSetSearchSeries([])
@@ -37,6 +43,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                     placeholder="Search for series..."
                     onChange={e => handleSearch(e)}
                     onKeyDown={(e) => handleOnKeyDown(e)}
+                    onKeyUp={(e) => handleOnKeyUp(e)}
                 />
                 <button onClick={handleClearSearch}>X</button>
             </div>
