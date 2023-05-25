@@ -32,12 +32,15 @@ function App() {
     setSearchSeries(searchSeries.filter(searchItem => !newSeries.includes(searchItem) ))
   }
 
-  async function handleFetchData() {
+  async function handleFetchData(searchValue) {
+    if (!searchValue) {
+      return
+    }
     try {
       const fetchOptions = {
         method: "POST"
       }
-      const responseData = await fetch(`http://localhost:5000/games/search/${searchText}`, fetchOptions)
+      const responseData = await fetch(`http://localhost:5000/games/search/${searchValue}`, fetchOptions)
       setRequestLoading(true)
 
       if (!responseData.ok) {
