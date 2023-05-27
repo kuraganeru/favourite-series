@@ -47,7 +47,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                 />
                 <button onClick={handleClearSearch}>X</button>
             </div>
-            <ul className="add-list-ul">
+            <ul className={`add-list-ul ${searchSeries && "search-active"}`}>
                 {
                     searchSeries && searchSeries.map(series => {
                         return (
@@ -55,6 +55,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                                 onClick={() => handleSetSeries(series)}
                                 key={series.id}
                             >
+                                <img src={`https://images.igdb.com/igdb/image/upload/t_thumb_2x/${series.cover.image_id}.jpg`} />
                                 {series.name}
                             </li>
 
