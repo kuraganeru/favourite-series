@@ -48,11 +48,11 @@ function App() {
       return
     }
     try {
+      setRequestLoading(true)
       const fetchOptions = {
         method: "POST"
       }
       const responseData = await fetch(`http://localhost:5000/games/search/${searchValue}`, fetchOptions)
-      setRequestLoading(true)
 
       if (!responseData.ok) {
         throw new Error("Request error")
