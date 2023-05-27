@@ -55,6 +55,7 @@ header button {
 
 .search-container {
   display: flex;
+  position:relative;
 }
 .search-container button {
   flex: 0;
@@ -90,11 +91,31 @@ header button {
   padding-left: 0;
 }
 
+.search-active {
+  position: absolute;
+  min-width: 276px;
+  background: #fff;
+  scrollbar-color: red;
+}
+
 .add-list-ul li {
   font-size: 0.8em;
+  border: 1px solid #000;
+  margin: 0;
+  border-top: none;
 }
+
 
 .add-list-ul li:hover {
   background: slategray;
   cursor: pointer;
+}
+
+.search-container .search-input,
+.search-container button {
+  margin-bottom: 0
+}
+
+li img {
+  max-height: 40px;
 }
