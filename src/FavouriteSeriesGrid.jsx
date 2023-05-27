@@ -8,7 +8,7 @@ function App() {
   const [editCategoryName, setEditCategoryName] = useState(false)
   const [clickedSeries, setClickedSeries] = useState(null)
   const [searchText, setSearchText] = useState("")
-  const [searchSeries, setSearchSeries] = useState(null)
+  const [searchSeries, setSearchSeries] = useState([])
   const [series, setSeries] = useState([])
   const [requestLoading, setRequestLoading] = useState(false)
 
