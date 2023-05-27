@@ -45,7 +45,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                     onKeyDown={(e) => handleOnKeyDown(e)}
                     onKeyUp={(e) => handleOnKeyUp(e)}
                 />
-                <button onClick={handleClearSearch}>{requestLoading ? "Loading..." : "X"}</button>
+                <button onClick={handleClearSearch} aria-busy={requestLoading ? true : ""}>{!requestLoading ? "✕" : ""}</button>
             </div>
             <ul className={`add-list-ul ${searchSeries && "search-active"}`}>
                 {
