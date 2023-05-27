@@ -6,7 +6,7 @@ export default function SeriesCategory({ series, clickedSeries, handleSetClicked
     return (
         <main className="container">
             <div className="grid">
-                <section>
+                <section className="series-item-container">
                     <SeriesCategoryItems
                         series={series}
                         clickedSeries={clickedSeries}
