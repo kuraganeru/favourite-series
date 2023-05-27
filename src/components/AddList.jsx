@@ -35,7 +35,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
     }
     return (
         <>
-            <div className="search-container">
+            <div className={`search-container ${searchText && searchSeries.length > 0 ? "search-container-active" : ""}`}>
                 <input
                     type="text"
                     value={searchText}
@@ -56,7 +56,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                                 key={series.id}
                             >
                                 <img src={`https://images.igdb.com/igdb/image/upload/t_thumb_2x/${series.cover.image_id}.jpg`} />
-                                {series.name}
+                                <span>{series.name}</span>
                             </li>
 
                         )
