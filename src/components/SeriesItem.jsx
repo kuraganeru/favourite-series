@@ -8,6 +8,7 @@ export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSerie
                 onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "img")}
                 onMouseLeave={() => onSetClickedSeriesChange(null)}
             />
+            <span onClick={() => handleRemoveSeries(oneSeries)}>✕</span>
         </div>
     )
 }

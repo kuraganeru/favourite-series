@@ -168,3 +168,24 @@ li img {
 .series-item-container > div {
   position: relative;
 }
+
+.series-item-container span {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: white;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #2b2b2b;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.6em;
+  font-weight: 800;
+  box-shadow: 0 0 2px #000;
+}
+
+.series-item-container span:hover {
+  cursor: pointer;
+}
