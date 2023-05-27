@@ -26,6 +26,12 @@ function App() {
     setSearchSeries(searchSeries.filter(searchItem => !newSeries.includes(searchItem) ))
   }
 
+  function handleRemoveSeries(oneSeries) {
+    let newSeries =[...series]
+    let removeSeries = newSeries.filter(series => series.id !== oneSeries.id)
+    setSeries(removeSeries)
+  }
+
   useEffect(() => {
     if (series.length > 0) {
       window.localStorage.setItem("series", JSON.stringify(series))
@@ -92,6 +98,7 @@ function App() {
         searchSeries={searchSeries}
         handleSetSeries={handleSetSeries}
         onSetSearchSeries={setSearchSeries}
+        handleRemoveSeries={handleRemoveSeries}
       />
     </>
   )

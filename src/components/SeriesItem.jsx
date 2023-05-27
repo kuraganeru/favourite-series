@@ -1,4 +1,4 @@
-export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSeriesChange }) {
+export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries }) {
     return (
         <>
             <img 
@@ -7,6 +7,7 @@ export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSerie
                 alt={oneSeries.title}
                 onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "img")}
                 onMouseLeave={() => onSetClickedSeriesChange(null)}
+                onClick={() => handleRemoveSeries(oneSeries)}
             />
         </>
     )

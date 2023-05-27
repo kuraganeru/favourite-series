@@ -1,6 +1,6 @@
 import SeriesItem from "./SeriesItem"
 
-export default function SeriesCategoryItems({series, clickedSeries, onSetClickedSeriesChange}) {
+export default function SeriesCategoryItems({series, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries}) {
     return (
         <>
             {series && series.map(oneSeries => (
@@ -9,6 +9,7 @@ export default function SeriesCategoryItems({series, clickedSeries, onSetClicked
                     key={oneSeries.id} 
                     clickedSeries={clickedSeries}
                     onSetClickedSeriesChange={onSetClickedSeriesChange}
+                    handleRemoveSeries={handleRemoveSeries}
                 />
             ))}
         </>
