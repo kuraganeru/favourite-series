@@ -158,3 +158,13 @@ li img {
   height: 85px;
   margin-right: 0.5em;
 }
+
+.series-item-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+.series-item-container > div {
+  position: relative;
+}
