@@ -45,7 +45,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                     onKeyDown={(e) => handleOnKeyDown(e)}
                     onKeyUp={(e) => handleOnKeyUp(e)}
                 />
-                <button onClick={handleClearSearch}>X</button>
+                <button onClick={handleClearSearch}>{requestLoading ? "Loading..." : "X"}</button>
             </div>
             <ul className={`add-list-ul ${searchSeries && "search-active"}`}>
                 {
