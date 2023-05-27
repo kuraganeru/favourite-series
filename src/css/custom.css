@@ -1,10 +1,11 @@
 main .grid {
-    grid-template-columns: auto 30%;
+  grid-template-columns: auto 30%;
 }
 
 aside ol li {
   display: list-item !important;
   font-size: 0.85em;
+  padding: 0;
 }
 
 /* AddSeriesSearch */
@@ -44,7 +45,7 @@ header button {
 }
 
 .img-selected {
-  transform:scale(1.05)
+  transform: scale(1.05)
 }
 
 .index-selected {
@@ -55,11 +56,20 @@ header button {
 
 .search-container {
   display: flex;
-  position:relative;
+  position: relative;
 }
+
 .search-container button {
   flex: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  border-left: none;
+  border-color: rgb(128, 128, 128);
 }
+
 /* .search-container input {
   flex: 1 0 85%;
 } */
@@ -92,22 +102,38 @@ header button {
 }
 
 .search-active {
-  position: absolute;
+  /* position: absolute; */
   min-width: 276px;
   background: #fff;
-  scrollbar-color: red;
+  z-index: 9999;
+}
+
+.search-container-active button {
+  border-bottom: 0;
+  border-bottom-right-radius: 0
 }
 
 .add-list-ul li {
   font-size: 0.8em;
-  border: 1px solid #000;
+  border: 1px solid rgb(128,128,128);
   margin: 0;
   border-top: none;
+  display:flex;
+  flex-flow: row nowrap;
+}
+
+.add-list-ul li:first-child {
+  border-top: 1px solid rgb(128, 128, 128)
+}
+
+.add-list-ul li:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 
 .add-list-ul li:hover {
-  background: slategray;
+  background: rgb(224, 224, 224);
   cursor: pointer;
 }
 
@@ -116,6 +142,19 @@ header button {
   margin-bottom: 0
 }
 
+.search-input {
+  margin-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-container-active input {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-color: rgb(128, 128, 128);
+}
+
 li img {
-  max-height: 40px;
+  height: 85px;
+  margin-right: 0.5em;
 }
