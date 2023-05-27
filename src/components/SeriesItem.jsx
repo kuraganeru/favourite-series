@@ -9,7 +9,7 @@ export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSerie
                 src={`https://images.igdb.com/igdb/image/upload/t_thumb_2x/${oneSeries.cover.image_id}.jpg`}
                 alt={oneSeries.title}
             />
-            <span onClick={() => handleRemoveSeries(oneSeries)}>✕</span>
+            {clickedSeries?.id === oneSeries?.id ? <span onClick={() => handleRemoveSeries(oneSeries)}>✕</span> : null}
         </div>
     )
 }
