@@ -1,7 +1,7 @@
 import SeriesCategoryHeader from "./components/SeriesCategoryHeader"
 import SeriesCategory from "./components/SeriesCategory"
 import AddSeries from "./components/AddSeries"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function App() {
   const [categoryName, setCategoryName] = useState("My Category!")
@@ -9,13 +9,7 @@ function App() {
   const [clickedSeries, setClickedSeries] = useState(null)
   const [searchText, setSearchText] = useState("")
   const [searchSeries, setSearchSeries] = useState(null)
-  const [series, setSeries] = useState([{
-    id: 103330,
-    category: 0,
-    cover: { id: 83563, image_id: 'co1sh7' },
-    name: 'Nioh 2',
-    platforms: [[Object], [Object]]
-  }])
+  const [series, setSeries] = useState([])
   const [requestLoading, setRequestLoading] = useState(false)
 
   function handleSetClickedSeries(oneSeries, originalElement) {
@@ -32,6 +26,17 @@ function App() {
     setSearchSeries(searchSeries.filter(searchItem => !newSeries.includes(searchItem) ))
   }
 
+  useEffect(() => {
+    if (series.length > 0) {
+      window.localStorage.setItem("series", JSON.stringify(series))
+    }
+  }, [series])
+
+  useEffect(() => {
+    const getSeries = window.localStorage.getItem("series")
+    setSeries(JSON.parse(getSeries))
+  }, [])
+
   async function handleFetchData(searchValue) {
     if (!searchValue) {
       return
@@ -47,7 +52,9 @@ function App() {
         throw new Error("Request error")
       }
       const responseJSON = await responseData.json()
-      setSearchSeries(responseJSON.filter(responseItem => series.some(oneSeries => oneSeries.id !== responseItem.id)))
+      const filtered = responseJSON.filter(responseItem => series.some(oneSeries => oneSeries.id !== responseItem.id))
+      
+      setSearchSeries(filtered.length > 0 ? filtered : responseJSON)
     } catch (error) {
       console.error(`Error: ${error}`)
     } finally {
