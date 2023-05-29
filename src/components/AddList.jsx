@@ -1,7 +1,9 @@
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useRef } from "react"
 import debounce from "lodash.debounce"
 
 export default function AddList({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries }) {
+    const listRef = useRef(null)
+    
     function handleOnKeyDown(e) {
         if (e.key === "Enter") {
             handleFetchData()
@@ -30,6 +32,18 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
         handleDebounce(searchText)
     }, [searchText])
 
+    useEffect(() => {
+        const handleOutsideClick = e => {
+            if (searchSeries.length > 0 && listRef.current && !listRef.current.contains(e.target)) {
+                handleClearSearch()
+            }
+        }
+
+        document.addEventListener("click", handleOutsideClick)
+
+        return window.removeEventListener("click", handleOutsideClick)
+    }, [searchSeries])
+
     function handleSearch(e) {
         onSetSearchText(e.target.value)
     }
@@ -49,6 +63,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
             </div>
             <ul 
                 className={`add-list-ul ${searchSeries.length > 0 ? "search-active" : ""}`}
+                ref={listRef}
                 >
                 {
                     searchSeries.length > 0 && searchSeries.map(series => {
