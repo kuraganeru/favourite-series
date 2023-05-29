@@ -47,7 +47,9 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                 />
                 <button onClick={handleClearSearch} aria-busy={requestLoading ? true : ""}>{!requestLoading ? "✕" : ""}</button>
             </div>
-            <ul className={`add-list-ul ${searchSeries && "search-active"}`}>
+            <ul 
+                className={`add-list-ul ${searchSeries.length > 0 ? "search-active" : ""}`}
+                >
                 {
                     searchSeries && searchSeries.map(series => {
                         return (
