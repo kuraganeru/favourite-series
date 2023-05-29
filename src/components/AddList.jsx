@@ -51,7 +51,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                 className={`add-list-ul ${searchSeries.length > 0 ? "search-active" : ""}`}
                 >
                 {
-                    searchSeries && searchSeries.map(series => {
+                    searchSeries.length > 0 && searchSeries.map(series => {
                         return (
                             <li
                                 onClick={() => handleSetSeries(series)}
