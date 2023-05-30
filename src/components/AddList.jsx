@@ -28,6 +28,10 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
         []
     )
 
+    function handleSearch(e) {
+        onSetSearchText(e.target.value)
+    }
+
     useEffect(() => {
         handleDebounce(searchText)
     }, [searchText])
@@ -43,10 +47,6 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
 
         return window.removeEventListener("mousedown", handleOutsideClick)
     }, [searchSeries])
-
-    function handleSearch(e) {
-        onSetSearchText(e.target.value)
-    }
     return (
         <>
             <div className={`search-container ${searchText && searchSeries.length > 0 ? "search-container-active" : ""}`}>
