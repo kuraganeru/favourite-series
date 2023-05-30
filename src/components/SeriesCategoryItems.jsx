@@ -2,7 +2,7 @@ import SeriesItem from "./SeriesItem"
 import ReactModal from "react-modal"
 import { useState } from "react"
 
-export default function SeriesCategoryItems({ series, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries}) {
+export default function SeriesCategoryItems({ series, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries, handleEditSeriesImage}) {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -11,6 +11,11 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
 
     function closeModal() {
         setIsOpen(false);
+    }
+
+    function handleClickEdit(oneSeries) {
+        handleEditSeriesImage(oneSeries)
+        openModal()
     }
 
     ReactModal.setAppElement('#root');
@@ -24,7 +29,7 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
                     clickedSeries={clickedSeries}
                     onSetClickedSeriesChange={onSetClickedSeriesChange}
                     handleRemoveSeries={handleRemoveSeries}
-                    onClickEditImage={openModal}
+                    onClickEditImage={handleClickEdit}
                 />
             ))}
             <ReactModal
