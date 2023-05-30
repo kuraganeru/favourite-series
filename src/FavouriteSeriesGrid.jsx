@@ -69,6 +69,10 @@ function App() {
     }
   }
 
+  function handleEditSeriesImage(oneSeries) {
+    console.log(oneSeries)
+  }
+
   return (
     <>
       <SeriesCategoryHeader
@@ -99,6 +103,7 @@ function App() {
         handleSetSeries={handleSetSeries}
         onSetSearchSeries={setSearchSeries}
         handleRemoveSeries={handleRemoveSeries}
+        handleEditSeriesImage={handleEditSeriesImage}
       />
     </>
   )
