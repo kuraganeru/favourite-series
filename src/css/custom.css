@@ -189,3 +189,11 @@ li img {
 .series-item-container span:hover {
   cursor: pointer;
 }
+
+.transparent-4 {
+  opacity: 0.4;
+}
+
+.not-allowed:hover {
+  cursor: not-allowed !important;
+}

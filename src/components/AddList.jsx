@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "react"
 import debounce from "lodash.debounce"
 
-export default function AddList({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries }) {
+export default function AddList({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries, series }) {
     const listRef = useRef(null)
     
     function handleOnKeyDown(e) {
@@ -66,14 +66,19 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                 ref={listRef}
                 >
                 {
-                    searchSeries.length > 0 && searchSeries.map(series => {
+                    searchSeries.length > 0 && searchSeries.map(oneSeries => {
+                        const foundAddedSeries = series.find(series => series.id === oneSeries.id)
                         return (
                             <li
-                                onClick={() => handleSetSeries(series)}
-                                key={series.id}
+                                className={foundAddedSeries ? "not-allowed" : ""}
+                                onClick={() => handleSetSeries(oneSeries)}
+                                key={oneSeries.id}
                             >
-                                <img src={`https://images.igdb.com/igdb/image/upload/t_thumb_2x/${series.cover.image_id}.jpg`} />
-                                <span>{series.name}</span>
+                                <img 
+                                    src={`https://images.igdb.com/igdb/image/upload/t_thumb_2x/${oneSeries.cover.image_id}.jpg`}
+                                    className={foundAddedSeries ? "transparent-4" : ""} 
+                                    />
+                                <span className={foundAddedSeries ? "transparent-4" : ""}>{oneSeries.name}</span>
                             </li>
 
                         )

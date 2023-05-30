@@ -17,6 +17,7 @@ export default function SeriesCategory({ series, clickedSeries, handleSetClicked
                 <aside>
                     <div>
                         <AddList
+                            series={series}
                             searchText={searchText}
                             onSetSearchText={onSetSearchText}
                             searchSeries={searchSeries}
