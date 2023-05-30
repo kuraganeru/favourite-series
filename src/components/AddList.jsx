@@ -39,9 +39,9 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
             }
         }
 
-        document.addEventListener("click", handleOutsideClick)
+        document.addEventListener("mousedown", handleOutsideClick)
 
-        return window.removeEventListener("click", handleOutsideClick)
+        return window.removeEventListener("mousedown", handleOutsideClick)
     }, [searchSeries])
 
     function handleSearch(e) {
