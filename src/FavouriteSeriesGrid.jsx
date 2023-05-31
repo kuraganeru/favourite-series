@@ -69,8 +69,12 @@ function App() {
     }
   }
 
-  function handleEditSeriesImage(oneSeries) {
-    console.log(oneSeries)
+  function handleEditSeriesImage(newImage) {
+    const updatedSeries = series.map(oneSeries => {
+      return oneSeries.id === clickedSeries.id ? {...oneSeries, img_url: newImage} : oneSeries
+    })
+    setSeries(updatedSeries)
+    console.log(updatedSeries)
   }
 
   return (

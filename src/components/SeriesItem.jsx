@@ -3,6 +3,7 @@ export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSerie
         <div
             onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "img")}
             onMouseLeave={() => onSetClickedSeriesChange(null)}
+            onClick={() => onSetClickedSeriesChange(oneSeries, "img")}
         >
             <img
                 className={`image ${clickedSeries?.originalElement !== "img" && clickedSeries?.id === oneSeries?.id ? "img-selected" : ""}`}

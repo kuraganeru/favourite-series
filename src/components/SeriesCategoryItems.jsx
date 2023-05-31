@@ -2,8 +2,9 @@ import SeriesItem from "./SeriesItem"
 import ReactModal from "react-modal"
 import { useState } from "react"
 
-export default function SeriesCategoryItems({ series, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries, handleEditSeriesImage}) {
+export default function SeriesCategoryItems({ series, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries, handleEditSeriesImage }) {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [newImage, setNewImage] = useState('')
 
     function openModal() {
         setIsOpen(true);
@@ -13,9 +14,10 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
         setIsOpen(false);
     }
 
-    function handleClickEdit(oneSeries) {
-        handleEditSeriesImage(oneSeries)
-        openModal()
+    function handleSubmitImage(e) {
+        e.preventDefault()
+        handleEditSeriesImage(newImage)
+        closeModal()
     }
 
     ReactModal.setAppElement('#root');
@@ -29,14 +31,24 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
                     clickedSeries={clickedSeries}
                     onSetClickedSeriesChange={onSetClickedSeriesChange}
                     handleRemoveSeries={handleRemoveSeries}
-                    onClickEditImage={handleClickEdit}
+                    onClickEditImage={openModal}
                 />
             ))}
             <ReactModal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
-            ></ReactModal>
+            >
+                <form onSubmit={handleSubmitImage}>
+                    <input
+                        type="text"
+                        value={newImage}
+                        placeholder="Enter an image URL"
+                        onChange={e => setNewImage(e.target.value)}
+                    />
+                    <button>Submit</button>
+                </form>
+            </ReactModal>
         </>
     )
 }
