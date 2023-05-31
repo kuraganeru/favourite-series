@@ -21,7 +21,7 @@ function App() {
     if (newSeries.find(series => series.id === oneSeries.id)) {
       return;
     }
-    newSeries.push(oneSeries)
+    newSeries.push({...oneSeries, img_url: `https://images.igdb.com/igdb/image/upload/t_thumb_2x/${oneSeries.cover.image_id}.jpg`})
     setSeries(newSeries)
     setSearchSeries(searchSeries.filter(searchItem => !newSeries.includes(searchItem) ))
   }
