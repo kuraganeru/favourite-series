@@ -5,6 +5,14 @@ import { useState } from "react"
 export default function SeriesCategoryItems({ series, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries, handleEditSeriesImage }) {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [newImage, setNewImage] = useState('')
+    const modalStyles = {
+        content: {
+            maxHeight: "400px",
+            left: "50%",
+            transform: "translate(-50%)",
+            width: "60%"
+        }
+    }
 
     function openModal() {
         setIsOpen(true);
@@ -38,6 +46,7 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
+                style={modalStyles}
             >
                 <form onSubmit={handleSubmitImage}>
                     <input
