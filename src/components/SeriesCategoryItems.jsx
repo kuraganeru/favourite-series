@@ -10,7 +10,8 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
             maxHeight: "400px",
             left: "50%",
             transform: "translate(-50%)",
-            width: "60%"
+            width: "60%",
+            padding: "40px"
         }
     }
 
