@@ -48,6 +48,7 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
                 contentLabel="Example Modal"
                 style={modalStyles}
             >
+                <h3>Editing {clickedSeries && clickedSeries.name}</h3>
                 <form onSubmit={handleSubmitImage}>
                     <input
                         type="text"
