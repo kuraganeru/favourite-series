@@ -26,7 +26,7 @@ export const SeriesItemDragging = forwardRef(({ id, oneSeries, clickedSeries, on
                         alt={oneSeries.title}
                         onClick={() => { onClickEditImage(oneSeries) }}
                     />
-                    {clickedSeries?.id === oneSeries?.id ? <span onClick={() => handleRemoveSeries(oneSeries)}>✕</span> : null}
+                    {clickedSeries?.id === oneSeries?.id && clickedSeries.originalElement === "img" ? <span onClick={() => handleRemoveSeries(oneSeries)}>✕</span> : null}
                 </div>
             }
         </>
