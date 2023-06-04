@@ -48,6 +48,8 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
 
     function closeModal() {
         setIsOpen(false);
+        setNewImage('')
+        onSetClickedSeriesChange(null)
     }
 
     function handleSubmitImage(e) {
