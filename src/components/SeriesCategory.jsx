@@ -2,19 +2,18 @@ import SeriesIndex from "./SeriesIndex"
 import SeriesCategoryItems from "./SeriesCategoryItems"
 import AddList from "./AddList"
 
-export default function SeriesCategory({ series, clickedSeries, handleSetClickedSeries, searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries, handleRemoveSeries, handleEditSeriesImage }) {
+export default function SeriesCategory({ series, clickedSeries, handleSetClickedSeries, searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries, handleRemoveSeries, handleEditSeriesImage, setSeries }) {
     return (
         <main className="container">
             <div className="grid">
-                <section className="series-item-container">
-                    <SeriesCategoryItems
-                        series={series}
-                        clickedSeries={clickedSeries}
-                        onSetClickedSeriesChange={handleSetClickedSeries}
-                        handleRemoveSeries={handleRemoveSeries}
-                        handleEditSeriesImage={handleEditSeriesImage}
-                    />
-                </section>
+                <SeriesCategoryItems
+                    series={series}
+                    setSeries={setSeries}
+                    clickedSeries={clickedSeries}
+                    onSetClickedSeriesChange={handleSetClickedSeries}
+                    handleRemoveSeries={handleRemoveSeries}
+                    handleEditSeriesImage={handleEditSeriesImage}
+                />
                 <aside>
                     <div>
                         <AddList

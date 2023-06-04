@@ -97,6 +97,7 @@ function App() {
 
       <SeriesCategory
         series={series}
+        setSeries={setSeries}
         clickedSeries={clickedSeries}
         handleSetClickedSeries={handleSetClickedSeries}
         searchText={searchText}
