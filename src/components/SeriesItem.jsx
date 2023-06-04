@@ -1,17 +1,28 @@
+import { useSortable } from '@dnd-kit/sortable'
+import { SeriesItemDragging } from './SeriesItemDragging';
+
 export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries, onClickEditImage }) {
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+    } = useSortable({ 
+        id: oneSeries.id,
+        attributes: {
+            role: "image"
+        }
+    });
+    
     return (
-        <div
-            onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "img")}
-            onMouseLeave={() => onSetClickedSeriesChange(null)}
-            onClick={() => onSetClickedSeriesChange(oneSeries, "img")}
-        >
-            <img
-                className={`image ${clickedSeries?.originalElement !== "img" && clickedSeries?.id === oneSeries?.id ? "img-selected" : ""}`}
-                src={oneSeries.img_url}
-                alt={oneSeries.title}
-                onClick={() => {onClickEditImage(oneSeries)}}
-            />
-            {clickedSeries?.id === oneSeries?.id ? <span onClick={() => handleRemoveSeries(oneSeries)}>✕</span> : null}
-        </div>
+        <SeriesItemDragging 
+            ref={setNodeRef} 
+            {...attributes} 
+            {...listeners} 
+            oneSeries={oneSeries} 
+            clickedSeries={clickedSeries} 
+            onSetClickedSeriesChange={onSetClickedSeriesChange}
+            handleRemoveSeries={handleRemoveSeries}
+            onClickEditImage={onClickEditImage}
+        />
     )
 }
