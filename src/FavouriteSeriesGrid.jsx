@@ -33,7 +33,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (series.length > 0) {
+    if (clickedSeries || series.length > 0) { 
       window.localStorage.setItem("series", JSON.stringify(series))
     }
   }, [series])
