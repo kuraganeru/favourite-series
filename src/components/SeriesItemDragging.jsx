@@ -1,8 +1,15 @@
 import { forwardRef } from 'react'
 
-export const SeriesItemDragging = forwardRef(({ id, oneSeries, clickedSeries, onSetClickedSeriesChange, onClickEditImage, handleRemoveSeries, draggedSeries, ...props }, ref) => {
+export const SeriesItemDragging = forwardRef(({ id, oneSeries, clickedSeries, onSetClickedSeriesChange, onClickEditImage, handleRemoveSeries, draggedSeries, modalIsOpen, ...props }, ref) => {
     const style = {
         opacity: 0.7
+    }
+
+    function checkModalIsOpenClickSeriesChange() {
+        if (modalIsOpen) {
+            return
+        }
+        onSetClickedSeriesChange(null)
     }
     return (
         <>
@@ -11,7 +18,7 @@ export const SeriesItemDragging = forwardRef(({ id, oneSeries, clickedSeries, on
                     {...props}
                     ref={ref}
                     onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "img")}
-                    onMouseLeave={() => onSetClickedSeriesChange(null)}
+                    onMouseLeave={checkModalIsOpenClickSeriesChange}
                 >
                     <img
                         className={`image ${clickedSeries?.originalElement !== "img" && clickedSeries?.id === oneSeries?.id ? "img-selected" : ""}`}

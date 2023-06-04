@@ -78,6 +78,7 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
                                 onSetClickedSeriesChange={onSetClickedSeriesChange}
                                 handleRemoveSeries={handleRemoveSeries}
                                 onClickEditImage={openModal}
+                                modalIsOpen={modalIsOpen}
                             />
                         ))}
                     </section>

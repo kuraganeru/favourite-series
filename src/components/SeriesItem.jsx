@@ -1,7 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable'
 import { SeriesItemDragging } from './SeriesItemDragging';
 
-export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries, onClickEditImage }) {
+export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSeriesChange, handleRemoveSeries, onClickEditImage, modalIsOpen }) {
     const {
         attributes,
         listeners,
@@ -23,6 +23,7 @@ export default function SeriesItem({ oneSeries, clickedSeries, onSetClickedSerie
             onSetClickedSeriesChange={onSetClickedSeriesChange}
             handleRemoveSeries={handleRemoveSeries}
             onClickEditImage={onClickEditImage}
+            modalIsOpen={modalIsOpen}
         />
     )
 }
