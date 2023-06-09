@@ -1,5 +1,6 @@
 import SeriesCategoryHeader from "./components/SeriesCategoryHeader"
 import SeriesCategory from "./components/SeriesCategory"
+import AddNewSeriesSidebar from "./components/AddNewSeriesSidebar"
 import { useEffect, useState } from "react"
 
 function App() {
@@ -20,19 +21,19 @@ function App() {
     if (newSeries.find(series => series.id === oneSeries.id)) {
       return;
     }
-    newSeries.push({...oneSeries, img_url: `https://images.igdb.com/igdb/image/upload/t_thumb_2x/${oneSeries.cover.image_id}.jpg`})
+    newSeries.push({ ...oneSeries, img_url: `https://images.igdb.com/igdb/image/upload/t_thumb_2x/${oneSeries.cover.image_id}.jpg` })
     setSeries(newSeries)
-    setSearchSeries(searchSeries.filter(searchItem => !newSeries.includes(searchItem) ))
+    setSearchSeries(searchSeries.filter(searchItem => !newSeries.includes(searchItem)))
   }
 
   function handleRemoveSeries(oneSeries) {
-    let newSeries =[...series]
+    let newSeries = [...series]
     let removeSeries = newSeries.filter(series => series.id !== oneSeries.id)
     setSeries(removeSeries)
   }
 
   useEffect(() => {
-    if (clickedSeries || series.length > 0) { 
+    if (clickedSeries || series.length > 0) {
       window.localStorage.setItem("series", JSON.stringify(series))
     }
   }, [series])
@@ -58,7 +59,7 @@ function App() {
       }
       const responseJSON = await responseData.json()
       const filtered = responseJSON.filter(responseItem => series.some(oneSeries => oneSeries.id !== responseItem.id))
-      
+
       setSearchSeries(filtered.length > 0 ? filtered : responseJSON)
     } catch (error) {
       console.error(`Error: ${error}`)
@@ -70,7 +71,7 @@ function App() {
 
   function handleEditSeriesImage(newImage) {
     const updatedSeries = series.map(oneSeries => {
-      return oneSeries.id === clickedSeries.id ? {...oneSeries, img_url: newImage} : oneSeries
+      return oneSeries.id === clickedSeries.id ? { ...oneSeries, img_url: newImage } : oneSeries
     })
     setSeries(updatedSeries)
     console.log(updatedSeries)
@@ -85,21 +86,30 @@ function App() {
         onSetCategoryNameChange={setCategoryName}
       />
 
-      <SeriesCategory
-        series={series}
-        setSeries={setSeries}
-        clickedSeries={clickedSeries}
-        handleSetClickedSeries={handleSetClickedSeries}
-        searchText={searchText}
-        onSetSearchText={setSearchText}
-        handleFetchData={handleFetchData}
-        requestLoading={requestLoading}
-        searchSeries={searchSeries}
-        handleSetSeries={handleSetSeries}
-        onSetSearchSeries={setSearchSeries}
-        handleRemoveSeries={handleRemoveSeries}
-        handleEditSeriesImage={handleEditSeriesImage}
-      />
+      <main className="container">
+        <div className="grid">
+          <SeriesCategory
+            series={series}
+            setSeries={setSeries}
+            clickedSeries={clickedSeries}
+            handleSetClickedSeries={handleSetClickedSeries}
+            handleRemoveSeries={handleRemoveSeries}
+            handleEditSeriesImage={handleEditSeriesImage}
+          />
+          <AddNewSeriesSidebar
+            series={series}
+            handleSetSeries={handleSetSeries}
+            searchText={searchText}
+            onSetSearchText={setSearchText}
+            searchSeries={searchSeries}
+            onSetSearchSeries={setSearchSeries}
+            handleFetchData={handleFetchData}
+            requestLoading={requestLoading}
+            clickedSeries={clickedSeries}
+            onSetClickedSeriesChange={handleSetClickedSeries}
+          />
+        </div>
+      </main>
     </>
   )
 }
