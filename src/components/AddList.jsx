@@ -38,7 +38,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
 
     useEffect(() => {
         const handleOutsideClick = e => {
-            if (searchSeries.length > 0 && listRef.current && !listRef.current.contains(e.target)) {
+            if (searchSeries.length > 0 && listRef.current && e.target.nodeName !== "INPUT" && !listRef.current.contains(e.target)) {
                 handleClearSearch()
             }
         }
