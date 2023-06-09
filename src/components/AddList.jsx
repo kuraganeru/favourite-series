@@ -55,9 +55,9 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                     value={searchText}
                     className="search-input"
                     placeholder="Search for series..."
-                    onChange={e => handleSearch(e)}
-                    onKeyDown={(e) => handleOnKeyDown(e)}
-                    onKeyUp={(e) => handleOnKeyUp(e)}
+                    onChange={handleSearch}
+                    onKeyDown={handleOnKeyDown}
+                    onKeyUp={handleOnKeyUp}
                 />
                 <button onClick={handleClearSearch} aria-busy={requestLoading ? true : ""}>{!requestLoading ? "✕" : ""}</button>
             </div>

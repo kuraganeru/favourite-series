@@ -14,7 +14,7 @@ export default function AddSeriesSearch({ searchText, onSetSearchText, handleFet
                     className="search-input"
                     placeholder="Search for series..."
                     onChange={(e) => onSetSearchText(e.target.value)}
-                    onKeyDown={(e) => handleOnKeyDown(e)}
+                    onKeyDown={handleOnKeyDown}
                 />
                 <button onClick={handleFetchData}>Search</button>
             </div>
