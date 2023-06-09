@@ -1,8 +1,7 @@
-import SeriesItem from "./SeriesItem"
-import ReactModal from "react-modal"
 import { useState } from "react"
-
 import { SeriesItemDragging } from "./SeriesItemDragging";
+import SeriesItem from "./SeriesItem"
+import EditImageModal from "./EditImageModal";
 
 import {
     DndContext,
@@ -32,15 +31,6 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
             coordinateGetter: sortableKeyboardCoordinates,
         })
     );
-    const modalStyles = {
-        content: {
-            maxHeight: "400px",
-            left: "50%",
-            transform: "translate(-50%)",
-            width: "60%",
-            padding: "40px"
-        }
-    }
 
     function openModal() {
         setIsOpen(true);
@@ -57,8 +47,6 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
         handleEditSeriesImage(newImage)
         closeModal()
     }
-
-    ReactModal.setAppElement('#root');
 
     return (
         <>
@@ -88,23 +76,14 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
                     {draggedSeries ? <SeriesItemDragging draggedSeries={draggedSeries} /> : null}
                 </DragOverlay>
             </DndContext>
-            <ReactModal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                contentLabel="Example Modal"
-                style={modalStyles}
-            >
-                <h3>Editing {clickedSeries && clickedSeries.name}</h3>
-                <form onSubmit={handleSubmitImage}>
-                    <input
-                        type="text"
-                        value={newImage}
-                        placeholder="Enter an image URL"
-                        onChange={e => setNewImage(e.target.value)}
-                    />
-                    <button>Submit</button>
-                </form>
-            </ReactModal>
+            <EditImageModal 
+                modalIsOpen={modalIsOpen}
+                closeModal={closeModal}
+                clickedSeries={clickedSeries}
+                handleSubmitImage={handleSubmitImage}
+                newImage={newImage}
+                setNewImage={setNewImage}
+            />
         </>
     )
 
