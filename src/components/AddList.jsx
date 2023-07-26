@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import debounce from "lodash.debounce"
 
 export default function AddList({ searchText, onSetSearchText, searchSeries, handleSetSeries, handleFetchData, requestLoading, onSetSearchSeries, series }) {
     const listRef = useRef(null)
-    
+    const btnRef = useRef(null)
+    const [sliceIndex, setSliceIndex] = useState(5)
+
     function handleOnKeyDown(e) {
         if (e.key === "Enter") {
             handleFetchData()
@@ -19,6 +21,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
     function handleClearSearch() {
         onSetSearchText("")
         onSetSearchSeries([])
+        setSliceIndex(5)
     }
 
     const handleDebounce = useCallback(
@@ -36,9 +39,13 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
         handleDebounce(searchText)
     }, [searchText])
 
+    useEffect(() => { // update slice index back to 5 after searchSeries has been updated (after search)
+        setSliceIndex(5)
+    }, [searchSeries])
+
     useEffect(() => {
         const handleOutsideClick = e => {
-            if (searchSeries.length > 0 && listRef.current && e.target.nodeName !== "INPUT" && !listRef.current.contains(e.target)) {
+            if (searchSeries.length > 0 && listRef.current && e.target.nodeName !== "INPUT" && e.target.nodeName !== "BUTTON" && !listRef.current.contains(e.target)) {
                 handleClearSearch()
             }
         }
@@ -47,6 +54,25 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
 
         return window.removeEventListener("mousedown", handleOutsideClick)
     }, [searchSeries])
+
+    function handleShowMoreResults() {
+        console.log(btnRef)
+        setSliceIndex(sliceIndex + 5)
+    }
+
+    function limitSearchResult() {
+        return searchSeries.slice(0, sliceIndex)
+    }
+
+    function returnEndOfResults() {
+        return sliceIndex > searchSeries.length
+    }
+
+    // useEffect(() => {
+    //     // console.log(btnRef.current)
+    //     btnRef.current?.scrollIntoView()
+    // }, [btnRef.current?.offsetTop])
+
     return (
         <>
             <div className={`search-container ${searchText && searchSeries.length > 0 ? "search-container-active" : ""}`}>
@@ -66,7 +92,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                 ref={listRef}
                 >
                 {
-                    searchSeries.length > 0 && searchSeries.map(oneSeries => {
+                    searchSeries.length > 0 && limitSearchResult().map(oneSeries => {
                         const foundAddedSeries = series.find(series => series.id === oneSeries.id)
                         return (
                             <li
@@ -83,6 +109,11 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
 
                         )
                     })
+                }
+                {searchSeries.length > 0 && 
+                    <button onClick={handleShowMoreResults} disabled={returnEndOfResults()} ref={btnRef} >
+                        {returnEndOfResults() ? "No more to show!" : "Show More"}
+                    </button>
                 }
             </ul>
         </>
