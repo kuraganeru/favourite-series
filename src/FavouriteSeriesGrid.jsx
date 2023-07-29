@@ -62,6 +62,18 @@ function App() {
     document.body.style.backgroundColor = bgColour
   }, [bgColour])
 
+  // save, set, update font colour
+  useEffect(() => {
+    if (!fontColour) return;
+    window.localStorage.setItem("fontColour", fontColour)
+  }, [fontColour])
+
+  useEffect(() => {
+    const getFontColour = window.localStorage.getItem("fontColour")
+    setFontColour(getFontColour)
+  })
+  
+
   async function handleFetchData(searchValue) {
     if (!searchValue) {
       return
@@ -100,6 +112,7 @@ function App() {
     <>
       <Settings 
         bgColour={bgColour}
+        fontColour={fontColour}
         setBgColour={setBgColour} 
         setFontColour={setFontColour}
       />

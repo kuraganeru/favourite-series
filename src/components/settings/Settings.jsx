@@ -1,4 +1,4 @@
-export default function Settings({bgColour, setBgColour, setFontColour}) {
+export default function Settings({bgColour, fontColour, setBgColour, setFontColour}) {
     
     function handleBgInput(e) {
         setBgColour(e.target.value)
@@ -16,7 +16,7 @@ export default function Settings({bgColour, setBgColour, setFontColour}) {
             </div>
 
             <div className="setting">
-                <input type="color" name="color-font" id="color-font" onInput={handleFontInput} />
+                <input type="color" name="color-font" id="color-font" onInput={handleFontInput} value={fontColour} />
                 <label htmlFor="color-bg">Font Colour</label>
             </div>
         </div>
