@@ -46,6 +46,21 @@ function App() {
     setSeries(JSON.parse(getSeries))
   }, [])
 
+  // Save, set, update background color with localStorage
+  useEffect(() => {
+    if (!bgColour) return;
+    window.localStorage.setItem("bgColour", bgColour)
+  }, [bgColour])
+
+  useEffect(() => {
+    const getBgColour = window.localStorage.getItem("bgColour")
+    setBgColour(getBgColour)
+  })
+
+  useEffect(() => {
+    document.body.style.backgroundColor = bgColour
+  }, [bgColour])
+
   async function handleFetchData(searchValue) {
     if (!searchValue) {
       return
@@ -79,10 +94,6 @@ function App() {
     setSeries(updatedSeries)
     console.log(updatedSeries)
   }
-
-  useEffect(() => {
-    document.body.style.backgroundColor = bgColour
-  }, [bgColour])
 
   return (
     <>
