@@ -1,6 +1,6 @@
-export default function SeriesIndex({ series, onSetClickedSeriesChange, clickedSeries }) {
+export default function SeriesIndex({ series, onSetClickedSeriesChange, clickedSeries, fontStyle }) {
     return (
-        <ol>
+        <ol style={fontStyle}>
             {series.map(oneSeries => (
                 <li
                     onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "li")}

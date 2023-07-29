@@ -14,6 +14,7 @@ function App() {
   const [requestLoading, setRequestLoading] = useState(false)
   const [bgColour, setBgColour] = useState('')
   const [fontColour, setFontColour] = useState('')
+  const fontStyle = {color: fontColour}
 
   function handleSetClickedSeries(oneSeries, originalElement) {
     setClickedSeries({ ...oneSeries, originalElement })
@@ -107,6 +108,7 @@ function App() {
         editCategoryName={editCategoryName}
         onSetEditCategoryNameChange={setEditCategoryName}
         onSetCategoryNameChange={setCategoryName}
+        fontStyle={fontStyle}
       />
 
       <main className="container">
@@ -130,6 +132,7 @@ function App() {
             requestLoading={requestLoading}
             clickedSeries={clickedSeries}
             onSetClickedSeriesChange={handleSetClickedSeries}
+            fontStyle={fontStyle}
           />
         </div>
       </main>
