@@ -98,6 +98,7 @@ function App() {
   return (
     <>
       <Settings 
+        bgColour={bgColour}
         setBgColour={setBgColour} 
         setFontColour={setFontColour}
       />
