@@ -1,6 +1,7 @@
 import SeriesCategoryHeader from "./components/SeriesCategoryHeader"
 import SeriesCategory from "./components/SeriesCategory"
 import AddNewSeriesSidebar from "./components/AddNewSeriesSidebar"
+import Settings from "./components/Settings/Settings"
 import { useEffect, useState } from "react"
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
   const [searchSeries, setSearchSeries] = useState([])
   const [series, setSeries] = useState([])
   const [requestLoading, setRequestLoading] = useState(false)
+  const [bgColour, setBgColour] = useState('')
+  const [fontColour, setFontColour] = useState('')
 
   function handleSetClickedSeries(oneSeries, originalElement) {
     setClickedSeries({ ...oneSeries, originalElement })
@@ -77,8 +80,16 @@ function App() {
     console.log(updatedSeries)
   }
 
+  useEffect(() => {
+    document.body.style.backgroundColor = bgColour
+  }, [bgColour])
+
   return (
     <>
+      <Settings 
+        setBgColour={setBgColour} 
+        setFontColour={setFontColour}
+      />
       <SeriesCategoryHeader
         categoryName={categoryName}
         editCategoryName={editCategoryName}
