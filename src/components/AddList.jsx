@@ -93,7 +93,7 @@ export default function AddList({ searchText, onSetSearchText, searchSeries, han
                 >
                 {
                     searchSeries.length > 0 && limitSearchResult().map(oneSeries => {
-                        const foundAddedSeries = series.find(series => series.id === oneSeries.id)
+                        const foundAddedSeries = series && series.length > 0 && series.find(series => series.id === oneSeries.id)
                         return (
                             <li
                                 className={foundAddedSeries ? "not-allowed" : ""}

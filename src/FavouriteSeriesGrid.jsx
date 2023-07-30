@@ -21,7 +21,8 @@ function App() {
   }
 
   function handleSetSeries(oneSeries) {
-    let newSeries = [...series]
+    
+    let newSeries = series ? [...series] : []
     if (newSeries.find(series => series.id === oneSeries.id)) {
       return;
     }
@@ -37,7 +38,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (clickedSeries || series.length > 0) {
+    if (clickedSeries || series && series.length > 0) {
       window.localStorage.setItem("series", JSON.stringify(series))
     }
   }, [series])

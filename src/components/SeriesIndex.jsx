@@ -1,7 +1,7 @@
 export default function SeriesIndex({ series, onSetClickedSeriesChange, clickedSeries, fontStyle }) {
     return (
         <ol style={fontStyle}>
-            {series.map(oneSeries => (
+            {series && series.length > 0 && series.map(oneSeries => (
                 <li
                     onMouseEnter={() => onSetClickedSeriesChange(oneSeries, "li")}
                     onMouseLeave={() => onSetClickedSeriesChange(null)}

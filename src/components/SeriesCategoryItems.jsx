@@ -25,7 +25,7 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
     const [draggedSeries, setDraggedSeries] = useState(null)
     const sensors = useSensors(
         useSensor(PointerSensor, {
-            activationConstraint: {distance: 10}
+            activationConstraint: { distance: 10 }
         }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
@@ -56,27 +56,29 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}>
 
-                <SortableContext items={series} strategy={horizontalListSortingStrategy}>
-                    <section className="series-item-container">
-                        {series && series.map(oneSeries => (
-                            <SeriesItem
-                                oneSeries={oneSeries}
-                                key={oneSeries.id}
-                                clickedSeries={clickedSeries}
-                                onSetClickedSeriesChange={onSetClickedSeriesChange}
-                                handleRemoveSeries={handleRemoveSeries}
-                                onClickEditImage={openModal}
-                                modalIsOpen={modalIsOpen}
-                            />
-                        ))}
-                    </section>
-                </SortableContext>
+                {series && series.length > 0 &&
+                    <SortableContext items={series} strategy={horizontalListSortingStrategy}>
+                        <section className="series-item-container">
+                            {series.map(oneSeries => (
+                                <SeriesItem
+                                    oneSeries={oneSeries}
+                                    key={oneSeries.id}
+                                    clickedSeries={clickedSeries}
+                                    onSetClickedSeriesChange={onSetClickedSeriesChange}
+                                    handleRemoveSeries={handleRemoveSeries}
+                                    onClickEditImage={openModal}
+                                    modalIsOpen={modalIsOpen}
+                                />
+                            ))}
+                        </section>
+                    </SortableContext>
+                }
 
                 <DragOverlay>
                     {draggedSeries ? <SeriesItemDragging draggedSeries={draggedSeries} /> : null}
                 </DragOverlay>
             </DndContext>
-            <EditImageModal 
+            <EditImageModal
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
                 clickedSeries={clickedSeries}
@@ -88,20 +90,20 @@ export default function SeriesCategoryItems({ series, clickedSeries, onSetClicke
     )
 
     function handleDragStart(event) {
-        const {active} = event
+        const { active } = event
         const foundSeries = series.filter(oneSeries => oneSeries.id === active.id)
         setDraggedSeries(foundSeries[0])
     }
 
     function handleDragEnd(event) {
-        const {active, over} = event;
-        
+        const { active, over } = event;
+
         if (active.id !== over.id) {
             setSeries((items) => {
-            const oldIndex = items.findIndex(item => item.id === active.id);
-            const newIndex = items.findIndex(item => item.id === over.id);            
-            return arrayMove(items, oldIndex, newIndex);
-          });
+                const oldIndex = items.findIndex(item => item.id === active.id);
+                const newIndex = items.findIndex(item => item.id === over.id);
+                return arrayMove(items, oldIndex, newIndex);
+            });
         }
-      }
+    }
 }
