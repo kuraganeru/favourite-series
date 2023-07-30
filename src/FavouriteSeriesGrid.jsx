@@ -111,18 +111,16 @@ function App() {
 
   return (
     <>
-      <Settings 
-        bgColour={bgColour}
-        fontColour={fontColour}
-        setBgColour={setBgColour} 
-        setFontColour={setFontColour}
-      />
       <SeriesCategoryHeader
         categoryName={categoryName}
         editCategoryName={editCategoryName}
         onSetEditCategoryNameChange={setEditCategoryName}
         onSetCategoryNameChange={setCategoryName}
         fontStyle={fontStyle}
+        bgColour={bgColour}
+        fontColour={fontColour}
+        setBgColour={setBgColour} 
+        setFontColour={setFontColour}
       />
 
       <main className="container">

@@ -33,7 +33,7 @@ export default function Settings({ bgColour, fontColour, setBgColour, setFontCol
 
     return (
         <>
-            <button onClick={openModal}>Settings</button>
+            <button onClick={openModal} className="button setting-btn">⚙</button>
             <ReactModal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
